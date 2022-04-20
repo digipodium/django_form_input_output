@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Product list{% endblock title %}
+
+{% block css %}
+
+{% endblock css %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 py-3">
+            <h3>Categories</h3>
+            <ul>
+
+                {% for cat in categories %}
+                <li>{{cat}}</li>
+                {% empty %}
+                <li>no categories</li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <div class="col-md-8 py-3">
+            <h3>Products</h3>
+            <div class="row">
+
+                {% for prd in p_list %}
+                <div class="col-md-3">
+                    <div class="card" style="width:18rem;">
+                        <img src="{{prd.img.url}}" height="250" class="card-img-top" alt="{{prd.name}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{prd.name|truncatechars:22}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted ">{{prd.category}}</h6>
+                            <p class="lead">${{prd.price}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="" class="btn btn-sm btn-outline-success btn-block">View</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <h1>No Products available</h1>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+{% block js %}
+
+{% endblock js %}
