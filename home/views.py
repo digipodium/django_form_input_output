@@ -26,3 +26,21 @@ def listingview(request):
     }
     return render(request, 'listing.html', ctx)
 
+def detailview(request,id):
+    product = get_object_or_404(Product, pk=id)
+    ctx = {'product': product,}
+    return render(request, 'detail.html', ctx)
+
+def categoryview(request):
+    filter = request.GET.get('c')
+    if filter:
+        products = Product.objects.filter(category__name=filter)
+    else:
+        return redirect('listing')
+
+    ctx = {
+        'p_list': products,
+        'category': filter,
+        'count': products.count(),
+    }
+    return render(request, 'category.html', ctx)

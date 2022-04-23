@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{product.img.url}}" alt="{{product.name}}" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="width:18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted ">{{product.category}}</h6>
+                    <p class="card-text">{{product.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

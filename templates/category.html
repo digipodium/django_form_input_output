@@ -11,21 +11,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 py-3">
-            <h3>Categories</h3>
-            <ul>
-
-                {% for cat in categories %}
-                <li>
-                    <a href="{% url 'category' %}?c={{cat}}">{{cat}}</a>
-                </li>
-                {% empty %}
-                <li>no categories</li>
-                {% endfor %}
-
-            </ul>
-        </div>
-        <div class="col-md-8 py-3">
+        <h3 class="text-center my-3">
+            {{category}} has {{count}} products
+        </h3>
+        <div class="col-md-8 mx-auto py-3">
             <h3>Products</h3>
             <div class="row">
 
@@ -39,8 +28,7 @@
                             <a href="{% url 'detail' prd.id %}">
                                 <h5 class="card-title">{{prd.name|truncatechars:22}}</h5>s
                             </a>
-                            <h6 class="card-subtitle mb-2 text-muted "><a
-                                    href="{% url 'category' %}?c={{prd.category}}">{{prd.category}}</a></h6>
+                            <h6 class="card-subtitle mb-2 text-muted ">{{prd.category}}</h6>
                             <p class="lead">${{prd.price}}</p>
                         </div>
                         <div class="card-footer">
