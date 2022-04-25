@@ -1,6 +1,6 @@
 from pyexpat import model
 from django.db import models
-from sqlalchemy import null
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -10,7 +10,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    description = models.TextField()
+    description = HTMLField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
     is_featured = models.BooleanField(default=False)
